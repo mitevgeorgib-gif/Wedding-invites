@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6efe6" />
+  <title>Покана за сватба</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro" id="intro">
+      <div class="eyebrow">Сватбена покана</div>
+      <h1>Георги &amp; Цвети</h1>
+      <p>С радост споделяме нашия специален ден с Вас.</p>
+      <button class="open-button" id="openInvite" type="button">Отвори поканата</button>
+    </section>
+
+    <section class="invite-stage hidden" id="inviteStage" aria-label="Дигитална сватбена покана">
+      <p class="hint">Докосни поканата, за да я обърнеш</p>
+      <div class="card-wrap" id="cardWrap" role="button" tabindex="0" aria-label="Обърни поканата">
+        <div class="card" id="card">
+          <div class="card-face card-front">
+            <img src="front.jpg" alt="Лице на поканата" />
+          </div>
+          <div class="card-face card-back">
+            <img src="back.jpg" alt="Гръб на поканата" />
+          </div>
+        </div>
+      </div>
+      <button class="flip-button" id="flipButton" type="button">Обърни</button>
+    </section>
+  </main>
+  <script src="../assets/script.js"></script>
+</body>
+</html>
