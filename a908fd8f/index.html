@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Покана</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at center, #232526 0%, #090909 100%);
+      color: #fff;
+      font-family: 'Georgia', 'Times New Roman', Times, serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .invitation-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .card-scene {
+      width: 370px;
+      height: 520px;
+      perspective: 1200px;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.4,0.2,0.2,1);
+      box-shadow: 0 8px 40px 0 rgba(0,0,0,0.45);
+      border-radius: 18px;
+      background: transparent;
+    }
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.15);
+    }
+    .card-front, .card-back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #181818;
+    }
+    .card-front img, .card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+    }
+    button {
+      padding: 0.8em 2.2em;
+      font-size: 1.2rem;
+      font-family: inherit;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #2d2d37 0%, #444 100%);
+      color: #fff;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.18);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.04em;
+    }
+    button:active {
+      background: #2b2b2d;
+      transform: scale(0.98);
+    }
+    @media (max-width: 430px) {
+      .card-scene {
+        width: 95vw;
+        height: 62vw;
+        max-width: 99vw;
+        max-height: 90vw;
+        min-width: 220px;
+        min-height: 310px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="invitation-container">
+    <div class="card-scene" id="card-scene">
+      <div class="card" id="card">
+        <div class="card-face card-front">
+          <img src="front.png" alt="Покана - лице">
+        </div>
+        <div class="card-face card-back">
+          <img src="back.png" alt="Покана - гръб">
+        </div>
+      </div>
+    </div>
+    <button id="flip-btn">Обърни поканата</button>
+  </div>
+  <script>
+    const card = document.getElementById('card');
+    const cardScene = document.getElementById('card-scene');
+    const flipBtn = document.getElementById('flip-btn');
+    let isFlipped = false;
+    function flipCard() {
+      isFlipped = !isFlipped;
+      card.classList.toggle('flipped', isFlipped);
+    }
+    cardScene.addEventListener('click', flipCard);
+    flipBtn.addEventListener('click', flipCard);
+  </script>
+</body>
+</html>
